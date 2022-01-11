@@ -1,0 +1,142 @@
+od -An -vtx1 myfile.bin > myfile.txt
+
+Then convert back from txt to binary with:
+
+while read p; do
+    IFS=' ' read -r -a array <<< "$p" 
+    for index in "${!array[@]}" 
+    do
+        echo -en "\x${array[index]}" 
+    done
+done < myfile.txt > myfile.bin
+
+
+/*
+
+
+https://stackoverflow.com/questions/33842685/converting-from-hexadecimal-to-binary-in-c
+
+
+
+
+#include "stdafx.h"
+#include<iostream>
+#include<string>
+#include<fstream>
+#include<cstdlib>
+
+using namespace std;
+
+
+class hextobin
+{
+private:
+
+public:
+    void convh_b(string);
+};
+
+// function convh_b 
+void hextobin::convh_b(string x)
+{
+    for(int i = 0; i<6; i++)
+    {
+        switch(x[i])
+        {
+        case '0': cout << "0000"; break;
+        case '1' :cout << "0001"; break;
+        case '2': cout << "0010"; break;
+        case '3': cout << "0011"; break;
+        case '4': cout << "0100"; break;
+        case '5': cout << "0101"; break;
+        case '6': cout << "0110"; break;
+        case '7': cout << "0111"; break;
+        case '8': cout << "1000"; break;
+        case '9': cout << "1001"; break;
+        case 'A': cout << "1010"; break;
+        case 'B': cout << "1011"; break;
+        case 'C': cout << "1100"; break;
+        case 'D': cout << "1101"; break;
+        case 'E': cout << "1110"; break;
+        case 'F': cout << "1111"; break;
+        }
+    }
+
+    cout << endl;
+}
+
+void main()
+{
+    hextobin p;
+    string  l1;
+    ifstream myfile("assembly.txt");
+
+    if(myfile.is_open())
+    {
+        while(!myfile.eof())
+        {
+            getline(myfile, l1);
+            cout << l1 << endl;
+            p.convh_b(l1);
+        }
+
+        myfile.close();
+    }
+    else
+        cout << "unable";
+}
+
+my code reads hex numbers from file then convert them to binary except the last digit of the first line ??
+
+Example:
+
+FF01
+B521
+
+Output:
+
+111111110000    // here 1 hexa not converted to 0001 ?? 
+1011010100100001 
+
+
+
+*/
+
+
+vi editor command::
+    Position the cursor where you want to begin cutting.
+    Press v to select characters (or uppercase V to select whole lines).
+    Move the cursor to the end of what you want to cut.
+    Press d to cut (or y to copy).
+    Move to where you would like to paste.
+    Press P to paste before the cursor, or p to paste after.
+
+
+
+
+solution:::
+
+while(!myfile.eof()) could be a problem. – 
+πάντα ῥεῖ
+Nov 21 '15 at 11:24
+BTW, you could use std::bitset instead of the switch statement. And look again, how I edited your code. Better, isn't it? – 
+LogicStuff
+Nov 21 '15 at 11:25
+Yes, I used it before and gave me the same error ! – 
+Dua'a Al-helou
+Nov 21 '15 at 11:29
+I Solved the problem a minute a go . – 
+Dua'a Al-helou
+Nov 21 '15 at 11:31
+getline(myfile, l1) gives you a boolean (success) flag. Use that in your condition. – 
+LogicStuff
+Nov 21 '15 at 11:31
+i just added this case ( case '!': return 0; ) in switch ,and it works ,, thank you ^^ – 
+Dua'a Al-helou
+Nov 21 '15 at 11:33
+What? That's all you did? – 
+LogicStuff
+Nov 21 '15 at 11:40
+
+
+
