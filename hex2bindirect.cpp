@@ -4,14 +4,30 @@ this is script to convert the hex value into the binary values.
 getting the VFAT hit values in each channel in hexadecimal format. it will convert the hex value in the binary values.
 */
 
-#include <bitset>
+
 //#include "stdafx.h"
 #include<iostream>
 #include<string>
 #include<fstream>
 #include<cstdlib>
+#include <bitset>
 //#include<bintohex_command.h>
 using namespace std;
+
+
+
+class hex2bin
+{
+
+
+
+
+
+
+
+}
+
+
 
 int main()
 {
