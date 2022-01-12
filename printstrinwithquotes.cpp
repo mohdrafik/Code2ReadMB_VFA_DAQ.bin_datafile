@@ -11,5 +11,6 @@ cout<<"enter a strin\n";
 cin>>str;
 cout<<"hello \"strghaja \""  <<endl;
 cout << "hello2 \"" <<str<< "\"" <<endl;
+cout << "\"hello2 \"  "  <<endl;
 
 }

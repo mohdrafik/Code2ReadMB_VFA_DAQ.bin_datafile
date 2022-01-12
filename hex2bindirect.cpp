@@ -3,8 +3,6 @@ first I have to convert these things.
 this is script to convert the hex value into the binary values.
 getting the VFAT hit values in each channel in hexadecimal format. it will convert the hex value in the binary values.
 */
-
-
 //#include "stdafx.h"
 #include<iostream>
 #include<string>
@@ -15,24 +13,14 @@ getting the VFAT hit values in each channel in hexadecimal format. it will conve
 using namespace std;
 
 
-
-class hex2bin
+class hex2hitdata  
 {
 
 
 
 
-
-
-
-}
-
-
-
-int main()
-{
- 
-    string  l1;
+ public:
+ string  l1;
     ifstream myfile("daqhex7dec_test.txt");
     ofstream myfilew1("daqbin7dec_test.txt",ios::out|ios::trunc);
 
@@ -40,11 +28,11 @@ int main()
     {
        //while(!myfile.eof())
         int count = 0;
- 	while(getline(myfile, l1))
+    while(getline(myfile, l1))
         {
-		count = count+1;
+        count = count+1;
            //getline(myfile, l1);
-	   int MAXnum_char = l1.length();
+       int MAXnum_char = l1.length();
       //cout<<"string length line by line: "<< count  <<"th :"<<maxnum_char<<endl;
       
 
@@ -89,5 +77,19 @@ int main()
   myfile.close();
   myfilew1.close();
 
- return 0;
+}
+
+
+
+int main(int argc, char const *argv[])
+{
+    
+// command line input ./a.out filename// filename: generated after command(od -An -vtx1 myfile.bin > myfilenew.txt) .bin to hex
+
+hex2hitdata hexclsobj(argv[1]);
+
+
+
+
+    return 0;
 }
