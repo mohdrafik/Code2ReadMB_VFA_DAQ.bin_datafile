@@ -20,7 +20,7 @@ string  l1;
 
 public:
    void hex2hitbitwise(char* inHexfilename,char* outfilename); // outfilename is binary hit information file after processing the hex file.
-   int no_rowsdatafile(char* inHexfilename);  
+   int no_rowsdatafile(char* inHexfilename);   // this function return total no of lines in inHexfilename(filename) 
    void outstreamhitfile2decichwse(char* outfilename,char* inHexfilename);
 
 
